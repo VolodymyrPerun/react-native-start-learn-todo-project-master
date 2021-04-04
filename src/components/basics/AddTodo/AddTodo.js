@@ -22,7 +22,7 @@ export const AddTodo = ({onSubmit}) => {
                                 if (value.trim()) {
                                     onSubmit(value);
                                     setValue('');
-                                    Keyboard.dismiss;
+                                    Keyboard.dismiss();
                                 } else {
                                     Alert.alert('Поле не може бути порожнім')
                                 }
