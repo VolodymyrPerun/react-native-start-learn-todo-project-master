@@ -3,12 +3,19 @@ import {Alert, StyleSheet, View} from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
+
 import {Navbar} from "./src/components/basics/Navbar/Navbar";
 import {MainScreen} from "./src/components/screens/MainScreen/MainScreen";
 import {TodoScreen} from "./src/components/screens/TodoScreen/TodoScreen";
+import {Ionicons} from "@expo/vector-icons";
+
 
 async function loadApplication() {
     await Font.loadAsync({
+        ...Ionicons.font,
+        ionicons: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf"),
+        anticon: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/AntDesign.ttf"),
+        FontAwesome: require("@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/FontAwesome.ttf"),
         'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
         'roboto-bold': require('./assets/fonts/Roboto-Bold.ttf')
     });
@@ -16,6 +23,7 @@ async function loadApplication() {
 
 
 export default function App() {
+
     const [isReady, setIsReady] = useState(false);
     const [todos, setTodos] = useState([]);
     const [todoId, setTodoId] = useState(null);
@@ -90,14 +98,15 @@ export default function App() {
     }
 
 
-    return (
-        <View>
-            <Navbar title={"Home"}/>
-            <View style={styles.container}>
-                {content}
+
+        return (
+            <View>
+                <Navbar title={"Home"}/>
+                <View style={styles.container}>
+                    {content}
+                </View>
             </View>
-        </View>
-    );
+        );
 };
 
 const styles = StyleSheet.create({

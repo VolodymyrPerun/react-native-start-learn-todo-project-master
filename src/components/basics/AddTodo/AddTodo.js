@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Alert, Button, StyleSheet, TextInput, View} from "react-native";
+import {Alert, StyleSheet, TextInput, View, Keyboard} from "react-native";
+import {AntDesign} from '@expo/vector-icons';
 
 
 export const AddTodo = ({onSubmit}) => {
@@ -15,15 +16,18 @@ export const AddTodo = ({onSubmit}) => {
                    autoCapitalize={'none'}
                    keyboardType={"twitter"}
         />
-        <Button title={'Добавити'}
-                onPress={() => {
-                    if (value.trim()) {
-                        onSubmit(value);
-                        setValue('');
-                    } else {
-                        Alert.alert('Поле не може бути порожнім')
-                    }
-                }}/>
+        <AntDesign.Button name={"pluscircleo"}
+                            backgroundColor={"#3b5998"}
+                            onPress={() => {
+                                if (value.trim()) {
+                                    onSubmit(value);
+                                    setValue('');
+                                    Keyboard.dismiss;
+                                } else {
+                                    Alert.alert('Поле не може бути порожнім')
+                                }
+                            }}
+        > Добавити </AntDesign.Button>
     </View>
 };
 

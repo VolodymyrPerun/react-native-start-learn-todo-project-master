@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 import {THEME} from '../../../constants/theme';
 import {AppCard} from "../../ui/AppCard";
-import {EditModal} from "../../basics/EditModal";
+import {EditModal} from "../../basics/EditModal/EditModal";
 import {AppTextBold} from "../../ui/AppTextBold";
+import {FontAwesome} from '@expo/vector-icons';
+import {AppButton} from "../../ui/AppButton";
 
 
 export const TodoScreen = ({goBack, todo, onRemove, onSave}) => {
@@ -24,9 +26,12 @@ export const TodoScreen = ({goBack, todo, onRemove, onSave}) => {
 
             <AppCard style={styles.card}>
                 <AppTextBold style={styles.title}>{todo.title}</AppTextBold>
-                <Button title='Ред.'
-                        onPress={() => setModal(true)}
-                />
+                <AppButton
+                    onPress={() => onRemove(todo.id)}
+                    color={THEME.DANGER_COLOR}
+                >
+                    <FontAwesome name={'remove'} size={20} color={'#fff'}/>
+                </AppButton>
             </AppCard>
 
             <View style={styles.buttons}>
